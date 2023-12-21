@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Mirkhan</title>
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/meyawo.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="#">Mirkhan</a>         
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="#home">Home</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">About</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#contact">Contact</a>
+                </li>
+                <li class="item ml-md-3">
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>          
+    </nav><!-- End of Page Navbar -->
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HEY!</span>
+                <span class="down">I'm Mirkhan</span>
+            </h1>
+            <p class="header-subtitle">Developer</p>            
+            <button class="btn btn-primary">Visit My Works</button>
+        </div>              
+    </header><!-- end of page header -->
+
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <div class="container text-center">
+            <div class="about">
+                <div class="about-img-holder">
+                    <img src="assets/imgs/IMG_8605.jpg" class="about-img" alt="Meyawo Landing Page">
+                </div>
+                <div class="about-caption">
+                    <p class="section-subtitle">Who Am I ?</p>
+                    <h2 class="section-title mb-3">About Me</h2>
+                    <p>
+                        Hey there! I'm Mirkhan, a passionate software engineer with a love for coding. I thrive on solving complex problems, crafting elegant solutions, and staying at the forefront of technology trends. From sleek user interfaces to robust backend systems, I enjoy every aspect of the development process. Let's connect and create something amazing together!
+                        <br>              
+                    </p>
+                </div>              
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">How can you communicate?</p>
+            <h6 class="section-title mb-5">Contact Me</h6>
+            <!-- contact form -->
+            <form action="#" class="contact-form col-md-10 col-lg-8 m-auto" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" required name="name">                 
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="email" class="form-control" placeholder="Enter Email" required name="email">                 
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea name="comment" id="comment" rows="6" class="form-control" placeholder="Write Something" required></textarea>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <input type="text" class="form-control" placeholder="Location" name="location">
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">                  
+                    </div>
+                </div>  
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">       
+            <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">Mirkhan</a></p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="7" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a> 
+                <a href="https://www.instagram.com/meinnameisteinfach/" class="link"><i class="ti-instagram"></i></a>
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+    
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Contact form and Discord webhook integration -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Replace with your Webtask URL
+            var webtaskUrl = "https://discord.com/api/webhooks/1186263736621740062/_AP4u0imQ7IlUANzHCvKxlg6GPA4gpFTQ3LslWONN-xyCVAQNiL7RCl7uzv8xkNdJeu9";
+
+            // Form data
+            var formData = new FormData(event.target);
+
+            // Construct the message with embed
+            var message = {
+                content: "New message:",
+                embeds: [
+                    {
+                        title: "Contact Form Submission",
+                        fields: [
+                            { name: "Name", value: formData.get("name"), inline: true },
+                            { name: "Email", value: formData.get("email"), inline: true },
+                            { name: "Message", value: formData.get("comment") },
+                            { name: "Location", value: formData.get("location") || "Not provided" },
+                        ],
+                    },
+                ],
+            };
+
+            // Send message to serverless function
+            axios.post(webtaskUrl, message)
+                .then(function(response) {
+                    console.log("Message sent to serverless function");
+                    // You can add any additional actions here if needed
+                })
+                .catch(function(error) {
+                    console.error("Error sending message to serverless function", error);
+                    // You can add any additional error handling here if needed
+                });
+        });
+    </script>
+
+</body>
+</html>
